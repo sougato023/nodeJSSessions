@@ -1,13 +1,12 @@
 /* ****************************************************************************************
 
 
-                            Validation and friendly error messages
+                            Database
 
 *******************************************************************************************/
 //npm install => dotenv
 //install mongoose
 //create server using express
-//install express-validator
 const express = require("express");
 const app = express();
 
