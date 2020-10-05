@@ -64,10 +64,20 @@
 const express = require("express");
 const app = express();
 
+// //my own middleware
+// //the process continues in the middleware
+// const my_middleware = () => {
+//     console.log("My middleware defined");
+// };
 //my own middleware
-const my_middleware = () => {
+//the process continues in the middleware.
+//to fix it we need to pass the next parameter in the function and inside the funcion should call next()
+const my_middleware = (req, res, next) => {
     console.log("My middleware defined");
+    //the process goes to next execution phase
+    next();
 };
+
 //install morgan => helps to see the route paths
 //npm i morgan
 // morgan works as a middleware
@@ -85,6 +95,7 @@ const {getPost} = require("./routes/post");
 app.use(morgan("dev"));
 
 //apply y midleware
+//the process continues in the middleware
 app.use(my_middleware);
 
 app.get("/", getPost);
